@@ -5,9 +5,8 @@ import { JournalLayout } from '../layout/JournalLayout'
 export const JournalPage = () => {
     return (
         <JournalLayout>
-
             <Typography>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, quisquam? Ad excepturi laborum alias reprehenderit, aspernatur voluptatum esse! Reiciendis adipisci laborum voluptates quis id tempore in aliquam ea placeat minima quia, rem saepe repellendus ad ullam voluptatibus beatae, molestiae architecto dolore a qui, fugiat impedit commodi. Beatae odit inventore quia praesentium unde, natus quos. Ea, cupiditate vel consequuntur a velit hic eveniet sit illo repellat, odit modi suscipit aliquid! Exercitationem minus in qui a error? Facilis, ut amet voluptates fugiat cupiditate aliquid exercitationem hic molestias molestiae? Quibusdam ab, voluptate aut dolores numquam quia amet corporis et veniam magni? Deleniti, fuga?
+                Sint id officia amet velit do aliqua aliqua est ea velit minim voluptate duis laboris. Esse esse consectetur ullamco excepteur ullamco amet. Mollit est nostrud nisi irure magna dolor eiusmod aliquip aliqua nostrud incididunt enim. Velit ipsum laborum Lorem anim laboris aute ullamco ipsum do adipisicing irure
             </Typography>
         </JournalLayout>
     )
