@@ -19,7 +19,8 @@ export const JournalLayout = ({ children }) => {
                 sx={{
                     flexGrow: 1,
                     p: 3,
-                    marginLeft: `${drawerWidth}px`
+                    width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    ml: { sm: `${drawerWidth}px` }
                 }}
             >
                 <Toolbar />

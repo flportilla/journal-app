@@ -1,24 +1,47 @@
 import React from 'react'
-
 import { Link as RouterLink } from 'react-router-dom'
 
 import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { Google } from '@mui/icons-material'
+
 import { AuthLayout } from '../layout/AuthLayout'
 
+import { useForm } from '../../hooks'
+
 export const LoginPage = () => {
+
+
+    const { email, password, onInputChange, formState } = useForm({
+        email: 'test@test.com',
+        password: '123456'
+    })
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        console.log(formState)
+
+    }
+
+    const onGoogleSignIn = () => {
+        console.log('onGoogle sign in')
+    }
+
     return (
 
         <AuthLayout title="login">
 
-            <form>
+            <form onSubmit={onSubmit}>
                 <Grid container>
                     <Grid item xs={12} sx={{ mt: 2 }}>
                         <TextField
                             label="Email"
                             type="email"
                             placeholder="mail@mail.com"
-                            fullWidth />
+                            fullWidth
+                            name="email"
+                            value={email}
+                            onChange={onInputChange}
+                        />
                     </Grid>
 
                     <Grid item xs={12} sx={{ mt: 2 }}>
@@ -26,6 +49,9 @@ export const LoginPage = () => {
                             label="Password"
                             type="password"
                             placeholder="password"
+                            name="password"
+                            value={password}
+                            onChange={onInputChange}
                             fullWidth />
                     </Grid>
 
@@ -34,13 +60,20 @@ export const LoginPage = () => {
                         sx={{ mb: 2, mt: 1 }}
                     >
                         <Grid item xs={12} sm={6} >
-                            <Button variant="contained" fullWidth >
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                fullWidth >
                                 Login
                             </Button>
                         </Grid>
 
                         <Grid item xs={12} sm={6} >
-                            <Button variant="contained" fullWidth >
+                            <Button
+                                variant="contained"
+                                fullWidth
+                                onClick={onGoogleSignIn}
+                            >
                                 <Google />
                                 <Typography sx={{ ml: 1 }}>Google</Typography>
 
@@ -52,7 +85,11 @@ export const LoginPage = () => {
                         direction="row"
                         justifyContent="end"
                     >
-                        <Link component={RouterLink} color="inherit" to="/auth/register">
+                        <Link
+                            component={RouterLink}
+                            color="inherit"
+                            to="/auth/register"
+                        >
                             Create account
                         </Link>
 
