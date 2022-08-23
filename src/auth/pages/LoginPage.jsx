@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
@@ -12,13 +12,16 @@ import { checkingAuthentication, startGoogleSignIn } from '../../store/auth'
 export const LoginPage = () => {
 
     const dispatch = useDispatch();
-    // const auth = useSelector(state => state.auth)
-
+    const { status } = useSelector(state => state.auth)
 
     const { email, password, onInputChange } = useForm({
         email: 'test@test.com',
         password: '123456'
     })
+
+    const isAuthenticating = useMemo(() => {
+        return status === 'checking'
+    }, [status])
 
     const onSubmit = (event) => {
         event.preventDefault()
@@ -68,7 +71,9 @@ export const LoginPage = () => {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                fullWidth >
+                                fullWidth
+                                disabled={isAuthenticating}
+                            >
                                 Login
                             </Button>
                         </Grid>
@@ -78,6 +83,7 @@ export const LoginPage = () => {
                                 variant="contained"
                                 fullWidth
                                 onClick={onGoogleSignIn}
+                                disabled={isAuthenticating}
                             >
                                 <Google />
                                 <Typography sx={{ ml: 1 }}>Google</Typography>
