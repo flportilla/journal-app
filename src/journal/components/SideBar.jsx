@@ -1,13 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material'
 
-import { TurnedInNot } from '@mui/icons-material'
+import { SideBarItem } from './SideBarItem'
+//import { setActiveNote } from '../../store/journal'
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
     const { displayName } = useSelector(state => state.auth)
+    const { notes } = useSelector(state => state.journal)
+
+    //One way of activating the note is this one
+    // const onNoteClick = (id) => {
+    //     const activeNote = notes.find(note => note.id === id)
+    //     dispatch(setActiveNote(activeNote))
+    // }
 
     return (
         <Box
@@ -37,19 +45,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 <Divider />
                 <List>
                     {
-                        ['january', 'february', 'march', 'april'].map(text => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon >
-                                        <TurnedInNot />
-                                    </ListItemIcon>
-                                    <Grid container>
-                                        <ListItemText primary={text} />
-                                        <ListItemText secondary={'Est aute consequat reprehenderit '} />
-
-                                    </Grid>
-                                </ListItemButton>
-                            </ListItem>
+                        notes.map(note => (
+                            <SideBarItem key={note.id} {...note} />
                         ))
                     }
                 </List>

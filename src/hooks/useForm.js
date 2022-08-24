@@ -9,6 +9,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         createValidators();
     }, [formState])
 
+    useEffect(() => {
+        setFormState(initialForm);
+    }, [initialForm])
+
     const isFormValid = useMemo(() => {
 
         for (const formValue of Object.keys(formValidation)) {
@@ -40,7 +44,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         for (const formField of Object.keys(formValidations)) {
             const [fn, errorMessage = 'Required field'] = formValidations[formField]
 
-            formCheckValues[`isValid${formField}`] =
+            formCheckValues[`isValidformField`] =
                 fn(formState[formField])
                     ? null
                     : errorMessage
