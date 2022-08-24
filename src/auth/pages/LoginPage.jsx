@@ -15,8 +15,8 @@ export const LoginPage = () => {
     const { status, displayName, email: authEmail, errorMessage } = useSelector(state => state.auth)
 
     const { email, password, onInputChange } = useForm({
-        email: 'test@test.com',
-        password: '123456'
+        email: '',
+        password: ''
     })
 
     const isAuthenticating = useMemo(() => {
