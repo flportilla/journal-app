@@ -12,7 +12,7 @@ import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth
 export const LoginPage = () => {
 
     const dispatch = useDispatch();
-    const { status, displayName, email: authEmail, errorMessage } = useSelector(state => state.auth)
+    const { status, errorMessage } = useSelector(state => state.auth)
 
     const { email, password, onInputChange } = useForm({
         email: '',
@@ -38,7 +38,10 @@ export const LoginPage = () => {
 
         <AuthLayout title="login">
 
-            <form onSubmit={onSubmit}>
+            <form
+                onSubmit={onSubmit}
+                className="animate__animated animate__fadeIn animate__faster"
+            >
                 <Grid container>
                     <Grid item xs={12} sx={{ mt: 2 }}>
                         <TextField
@@ -71,7 +74,7 @@ export const LoginPage = () => {
                             item xs={12}
                             display={!!errorMessage ? '' : 'none'}
                         >
-                            <Alert severity="error">{errorMessage}</Alert>
+                            <Alert severity="error">{errorMessage?.errorMessage}</Alert>
                         </Grid>
                         <Grid item xs={12} sm={6} >
                             <Button

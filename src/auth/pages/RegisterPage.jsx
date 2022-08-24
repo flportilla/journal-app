@@ -52,7 +52,10 @@ export const RegisterPage = () => {
 
         <AuthLayout title="Create account">
 
-            <form onSubmit={onSubmitForm}>
+            <form
+                onSubmit={onSubmitForm}
+                className="animate__animated animate__fadeIn animate__faster"
+            >
                 <Grid container>
                     <Grid item xs={12} sx={{ mt: 2 }}>
                         <TextField
@@ -108,7 +111,7 @@ export const RegisterPage = () => {
                             item xs={12}
                             display={!!errorMessage ? '' : 'none'}
                         >
-                            <Alert severity="error">{errorMessage}</Alert>
+                            <Alert severity="error">{errorMessage?.errorMessage}</Alert>
                         </Grid>
 
                         <Grid item xs={12}  >
