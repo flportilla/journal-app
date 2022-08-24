@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Button, Grid, TextField, Typography } from '@mui/material'
 
@@ -6,6 +7,7 @@ import { SaveOutlined } from '@mui/icons-material'
 import { ImageGallery } from '../components'
 
 export const NoteView = () => {
+
     return (
         <Grid
             container
