@@ -1,7 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite"
 import { FirebaseDB } from "../../firebase/config"
-import { loadNotes } from "../../helpers"
-import { addNewEmptyNote, setActiveNote, savingNewNote, setNotes, setSaving, noteUpdated } from "./journalSlice"
+import { fileUpload, loadNotes } from "../../helpers"
+import { addNewEmptyNote, setActiveNote, savingNewNote, setNotes, setSaving, noteUpdated, setPhotosToActiveNote } from "./journalSlice"
 
 export const startNewNote = () => {
     return async (dispatch, getState) => {
@@ -48,11 +48,29 @@ export const startSaveNote = () => {
         if (!uid) throw new Error("The user doesn't exist")
         const { active: note } = getState().journal
 
-        dispatch(noteUpdated(note))
         const noteToFireStore = { ...note }
         delete noteToFireStore.id
 
         const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`)
         await setDoc(docRef, noteToFireStore, { merge: true })
+        dispatch(noteUpdated(note))
+    }
+}
+
+export const startUploadingFiles = (files = []) => {
+    return async (dispatch) => {
+        dispatch(setSaving())
+
+        //await fileUpload(files[0])
+        const fileUploadPromises = []
+
+        for (const file of files) {
+            fileUploadPromises.push(fileUpload(file))
+        }
+
+        const photosUrls = await Promise.all(fileUploadPromises);
+
+        dispatch(setPhotosToActiveNote(photosUrls))
+
     }
 }
