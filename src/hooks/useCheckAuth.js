@@ -7,7 +7,6 @@ import { FirebaseAuth } from '../firebase/config';
 import { login, logout } from '../store/auth';
 import { startLoadingNotes } from "../store/journal/thunks";
 
-
 export const useCheckAuth = () => {
     const { status } = useSelector(state => state.auth)
     const dispatch = useDispatch()
@@ -26,6 +25,5 @@ export const useCheckAuth = () => {
     }, [])
 
     return status
-
 
 }

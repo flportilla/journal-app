@@ -1,21 +1,14 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material'
 
 import { SideBarItem } from './SideBarItem'
-//import { setActiveNote } from '../../store/journal'
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
     const { displayName } = useSelector(state => state.auth)
     const { notes } = useSelector(state => state.journal)
-
-    //One way of activating the note is this one
-    // const onNoteClick = (id) => {
-    //     const activeNote = notes.find(note => note.id === id)
-    //     dispatch(setActiveNote(activeNote))
-    // }
 
     return (
         <Box

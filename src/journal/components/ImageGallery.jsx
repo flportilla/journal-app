@@ -3,7 +3,7 @@ import { ImageList, ImageListItem } from '@mui/material';
 
 export const ImageGallery = ({ images }) => {
 
-    if (!images) return
+    if (!images) return <div>No images to show</div>
 
     return (
         <ImageList sx={{ width: '100%', height: 450 }} cols={4} rowHeight={164}>

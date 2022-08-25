@@ -6,8 +6,6 @@ import { setActiveNote } from '../../store/journal'
 
 export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
 
-    //This is another way to activate the notes
-
     const dispatch = useDispatch()
 
     const onNoteClick = () => {

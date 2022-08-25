@@ -27,18 +27,15 @@ export const LoginPage = () => {
     const onSubmit = (event) => {
         event.preventDefault()
         dispatch(startLoginWithEmailPassword({ email, password }))
-
     }
 
     const onGoogleSignIn = () => {
-
         dispatch(startGoogleSignIn())
     }
 
     return (
 
         <AuthLayout title="login">
-
             <form
                 onSubmit={onSubmit}
                 className="animate__animated animate__fadeIn animate__faster"
@@ -118,9 +115,6 @@ export const LoginPage = () => {
                     </Grid>
                 </Grid>
             </form>
-
         </AuthLayout>
-
-
     )
 }

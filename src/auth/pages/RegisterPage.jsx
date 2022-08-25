@@ -40,7 +40,6 @@ export const RegisterPage = () => {
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-
         setFormSubmitted(true)
 
         if (!isFormValid) return
@@ -140,6 +139,5 @@ export const RegisterPage = () => {
             </form>
 
         </AuthLayout>
-
     )
 }
