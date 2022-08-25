@@ -26,6 +26,6 @@ export const demoUser = {
     uid: 'abc123',
     email: 'demo@test.com',
     displayName: 'demo user',
-    photoURL: 'http://demo.jpg'
+    photoUrl: 'http://demo.jpg'
 }
 
