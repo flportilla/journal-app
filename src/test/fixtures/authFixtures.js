@@ -23,9 +23,10 @@ export const notAuthenticated = {
     errorMessage: null
 }
 export const demoUser = {
-    uid: 'abc123',
     email: 'demo@test.com',
-    displayName: 'demo user',
-    photoUrl: 'http://demo.jpg'
+    password: '123456',
+    name: 'demo user',
+    uid: 'abc123',
+    photoURL: 'http://demo.jpg'
 }
 
